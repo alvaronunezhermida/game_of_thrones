@@ -12,19 +12,19 @@ class ServiceDataSource(private val service: Service): RemoteDataSource {
 
     override suspend fun getCategories(): Result<List<CategoryDTO>> =
         service.apiService
-            .getCategories().await()
+            .getCategoriesAsync().await()
 
 
-    override suspend fun getBooks(): Result<List<BookDTO>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getBooks(): Result<List<BookDTO>> =
+            service.apiService
+                    .getBooksAsync().await()
 
-    override suspend fun getHouses(): Result<List<HouseDTO>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getHouses(): Result<List<HouseDTO>> =
+            service.apiService
+                    .getHousesAsync().await()
 
-    override suspend fun getCharacters(): Result<List<CharDTO>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getCharacters(): Result<List<CharDTO>> =
+            service.apiService
+                    .getCharactersAsync().await()
 
 }
