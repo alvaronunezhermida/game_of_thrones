@@ -2,18 +2,13 @@ package com.alvaronunez.gameofthrones.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.alvaronunez.gameofthrones.GameOfThronesApp
 import com.alvaronunez.gameofthrones.R
-import com.alvaronunez.gameofthrones.data.repository.Repository
-import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
-import com.alvaronunez.gameofthrones.presentation.data.database.RoomDataSource
-import com.alvaronunez.gameofthrones.presentation.data.service.Service
-import com.alvaronunez.gameofthrones.presentation.data.service.ServiceDataSource
+import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity(), SplashPresenter.View {
 
     // TODO: 20/10/2020 Inject dependencies
-    private lateinit var presenter: SplashPresenter
+    private val presenter by inject<SplashPresenter>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

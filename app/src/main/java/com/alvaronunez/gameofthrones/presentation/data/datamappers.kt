@@ -5,14 +5,13 @@ import com.alvaronunez.gameofthrones.presentation.data.database.entities.Categor
 
 fun CategoryDTO.toRoomCategoryEntity(): CategoryEntity =
     CategoryEntity(
-        id,
+        null,
         name,
         type
     )
 
 fun CategoryEntity.toCategoryDTO(): CategoryDTO =
     CategoryDTO(
-        id,
         name,
         type
     )
