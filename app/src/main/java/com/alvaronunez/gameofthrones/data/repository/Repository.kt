@@ -15,7 +15,9 @@ class Repository(
             return if (result is Result.Response && result.data.isNotEmpty()) {
                 result
             } else {
-                remoteDataSource.getCategories()
+                remoteDataSource.getCategories().also { remoteResult ->
+                    if (remoteResult is Result.Response && remoteResult.data.isNotEmpty()) localDataSource.saveCategories(remoteResult.data)
+                }
             }
         }
     }
