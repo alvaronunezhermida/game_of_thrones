@@ -1,5 +1,6 @@
 package com.alvaronunez.gameofthrones.presentation.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alvaronunez.gameofthrones.R
@@ -13,7 +14,7 @@ class SplashActivity : AppCompatActivity(), SplashPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        presenter.onCreate()
+        presenter.onCreate(this)
     }
 
     override fun onDestroy() {
@@ -22,6 +23,7 @@ class SplashActivity : AppCompatActivity(), SplashPresenter.View {
     }
 
     override fun navigateToCategories() {
-        // TODO: 20/10/2020 Create and start CategoriesActivity
+        startActivity(Intent(this, CategoriesActivity::class.java))
+        finish()
     }
 }

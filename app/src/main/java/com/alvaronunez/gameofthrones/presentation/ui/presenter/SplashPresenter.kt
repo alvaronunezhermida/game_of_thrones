@@ -11,8 +11,11 @@ class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.
         fun navigateToCategories()
     }
 
-    fun onCreate() {
+    private var view: View? = null
+
+    fun onCreate(view: View) {
         initScope()
+        this.view = view
 
         launch {
             getCategories.invoke { result ->
@@ -30,6 +33,7 @@ class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.
 
 
     fun onDestory() {
+        this.view = null
         destroyScope()
     }
 

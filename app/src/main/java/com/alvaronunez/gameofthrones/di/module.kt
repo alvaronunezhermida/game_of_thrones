@@ -10,6 +10,7 @@ import com.alvaronunez.gameofthrones.presentation.data.database.AppDatabase
 import com.alvaronunez.gameofthrones.presentation.data.database.RoomDataSource
 import com.alvaronunez.gameofthrones.presentation.data.service.Service
 import com.alvaronunez.gameofthrones.presentation.data.service.ServiceDataSource
+import com.alvaronunez.gameofthrones.presentation.ui.presenter.CategoriesPresenter
 import com.alvaronunez.gameofthrones.presentation.ui.presenter.SplashPresenter
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
@@ -45,4 +46,5 @@ private val domainModule = module {
 
 private val presentersModule = module {
     factory { SplashPresenter(get()) }
+    factory { CategoriesPresenter() }
 }
