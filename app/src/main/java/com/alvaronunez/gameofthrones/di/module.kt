@@ -46,5 +46,5 @@ private val domainModule = module {
 
 private val presentersModule = module {
     factory { SplashPresenter(get()) }
-    factory { CategoriesPresenter() }
+    factory { CategoriesPresenter(get()) }
 }

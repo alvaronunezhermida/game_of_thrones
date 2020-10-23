@@ -21,7 +21,7 @@ class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.
             getCategories.invoke { result ->
                 when(result) {
                     is Result.Response -> {
-                        // TODO: 20/10/2020 Load categories screen
+                        view.navigateToCategories()
                     }
                     is Result.Error -> {
                         // TODO: 20/10/2020 Handle error

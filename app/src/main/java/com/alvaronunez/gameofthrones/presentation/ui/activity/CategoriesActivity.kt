@@ -2,15 +2,14 @@ package com.alvaronunez.gameofthrones.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alvaronunez.gameofthrones.R
+import com.alvaronunez.gameofthrones.data.models.CategoryDTO
 import com.alvaronunez.gameofthrones.presentation.ui.adapter.CategoriesAdapter
 import com.alvaronunez.gameofthrones.presentation.ui.presenter.CategoriesPresenter
-import com.alvaronunez.gameofthrones.presentation.ui.presenter.SplashPresenter
 import org.koin.android.ext.android.inject
 
-class CategoriesActivity() : AppCompatActivity(), CategoriesPresenter.View {
+class CategoriesActivity : AppCompatActivity(), CategoriesPresenter.View {
 
     private val presenter by inject<CategoriesPresenter>()
 
@@ -40,6 +39,10 @@ class CategoriesActivity() : AppCompatActivity(), CategoriesPresenter.View {
 
     override fun navigateToChars() {
         TODO("Not yet implemented")
+    }
+
+    override fun loadCategories(categories: List<CategoryDTO>) {
+        adapter.categories = categories
     }
 
 
