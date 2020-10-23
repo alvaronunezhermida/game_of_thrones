@@ -1,6 +1,6 @@
 package com.alvaronunez.gameofthrones.data
 
-
+// TODO: 23/10/2020 Use Either?
 sealed class Result<out T : Any> {
 
     class Response<out T : Any>(val data: T) : Result<T>()

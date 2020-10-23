@@ -1,13 +1,13 @@
-package com.alvaronunez.gameofthrones.presentation.ui
+package com.alvaronunez.gameofthrones.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alvaronunez.gameofthrones.R
+import com.alvaronunez.gameofthrones.presentation.ui.presenter.SplashPresenter
 import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity(), SplashPresenter.View {
 
-    // TODO: 20/10/2020 Inject dependencies
     private val presenter by inject<SplashPresenter>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

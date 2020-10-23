@@ -1,4 +1,4 @@
-package com.alvaronunez.gameofthrones.presentation.ui
+package com.alvaronunez.gameofthrones.presentation.ui.presenter
 
 import com.alvaronunez.gameofthrones.data.Result
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
