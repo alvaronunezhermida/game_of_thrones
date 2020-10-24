@@ -1,15 +1,15 @@
 package com.alvaronunez.gameofthrones.presentation.ui.presenter
 
 import com.alvaronunez.gameofthrones.data.Result
+import com.alvaronunez.gameofthrones.data.models.CategoryDTO
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import com.alvaronunez.gameofthrones.presentation.ui.common.Scope
+import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
 import kotlinx.coroutines.launch
 
-class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.Impl() {
-
-    interface View {
-        fun navigateToCategories()
-    }
+class CategoriesPresenter(
+        private val view: CategoriesContract.View,
+        private val getCategories: GetCategories): CategoriesContract.Presenter, Scope by Scope.Impl() {
 
     fun onCreate() {
         initScope()
@@ -18,7 +18,7 @@ class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.
             getCategories.invoke { result ->
                 when(result) {
                     is Result.Response -> {
-                        // TODO: 20/10/2020 Load categories screen
+                        view.loadCategories(result.data.sortedBy { it.name })
                     }
                     is Result.Error -> {
                         // TODO: 20/10/2020 Handle error
@@ -26,10 +26,19 @@ class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.
                 }
             }
         }
+
+    }
+
+    override fun onCategoryClicked(category: CategoryDTO) {
+        when (category.type) {
+            0 -> view.navigateToBooks()
+            1 -> view.navigateToHouses()
+            2 -> view.navigateToChars()
+        }
     }
 
 
-    fun onDestory() {
+    fun onDestroy() {
         destroyScope()
     }
 
