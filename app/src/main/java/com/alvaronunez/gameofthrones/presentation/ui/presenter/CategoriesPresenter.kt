@@ -11,7 +11,7 @@ class CategoriesPresenter(
         private val view: CategoriesContract.View,
         private val getCategories: GetCategories): CategoriesContract.Presenter, Scope by Scope.Impl() {
 
-    fun onCreate() {
+    override fun onCreate() {
         initScope()
 
         launch {
@@ -38,7 +38,7 @@ class CategoriesPresenter(
     }
 
 
-    fun onDestroy() {
+    override fun onDestroy() {
         destroyScope()
     }
 
