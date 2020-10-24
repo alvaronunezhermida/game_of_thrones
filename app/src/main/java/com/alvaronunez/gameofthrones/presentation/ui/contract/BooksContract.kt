@@ -7,7 +7,7 @@ class BooksContract {
     interface View {
         fun showProgress()
         fun hideProgress()
-        fun loadBooks(categories: List<BookDTO>)
+        fun loadBooks(books: List<BookDTO>)
     }
 
     interface Presenter {

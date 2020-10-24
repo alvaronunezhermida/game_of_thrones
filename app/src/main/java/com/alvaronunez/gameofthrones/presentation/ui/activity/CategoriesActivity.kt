@@ -1,5 +1,6 @@
 package com.alvaronunez.gameofthrones.presentation.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +36,7 @@ class CategoriesActivity : AppCompatActivity(), CategoriesContract.View {
     }
 
     override fun navigateToBooks() {
-        TODO("Not yet implemented")
+        startActivity(Intent(this, BooksActivity::class.java))
     }
 
     override fun navigateToHouses() {

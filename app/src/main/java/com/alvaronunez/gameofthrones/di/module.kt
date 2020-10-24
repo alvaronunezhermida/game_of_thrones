@@ -5,12 +5,15 @@ import com.alvaronunez.gameofthrones.R
 import com.alvaronunez.gameofthrones.data.repository.Repository
 import com.alvaronunez.gameofthrones.data.source.LocalDataSource
 import com.alvaronunez.gameofthrones.data.source.RemoteDataSource
+import com.alvaronunez.gameofthrones.domain.usecases.GetBooks
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import com.alvaronunez.gameofthrones.presentation.data.database.AppDatabase
 import com.alvaronunez.gameofthrones.presentation.data.database.RoomDataSource
 import com.alvaronunez.gameofthrones.presentation.data.service.Service
 import com.alvaronunez.gameofthrones.presentation.data.service.ServiceDataSource
+import com.alvaronunez.gameofthrones.presentation.ui.contract.BooksContract
 import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
+import com.alvaronunez.gameofthrones.presentation.ui.presenter.BooksPresenter
 import com.alvaronunez.gameofthrones.presentation.ui.presenter.CategoriesPresenter
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
@@ -42,8 +45,10 @@ private val dataModule = module {
 
 private val domainModule = module {
     factory { GetCategories(get()) }
+    factory { GetBooks(get()) }
 }
 
 private val presentersModule = module {
     factory { (view: CategoriesContract.View) -> CategoriesPresenter(view, get()) }
+    factory { (view: BooksContract.View) -> BooksPresenter(view, get()) }
 }

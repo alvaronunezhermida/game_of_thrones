@@ -14,6 +14,7 @@ class BooksPresenter(
         initScope()
 
         launch {
+            view.showProgress()
             getBooks.invoke { result ->
                 when(result) {
                     is Result.Response -> {
@@ -24,6 +25,7 @@ class BooksPresenter(
                     }
                 }
             }
+            view.hideProgress()
         }
 
     }

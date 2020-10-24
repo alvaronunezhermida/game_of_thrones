@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Game Of Thrones</string>
     <string name="baseApiUrl">https://private-anon-2a3767e7a7-androidtestmobgen.apiary-mock.com/</string>
+    <string name="bookAuthor">By %s</string>
+    <string name="bookPages">%s pages</string>
 </resources>
