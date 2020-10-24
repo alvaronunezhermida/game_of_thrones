@@ -4,22 +4,15 @@ import com.alvaronunez.gameofthrones.data.Result
 import com.alvaronunez.gameofthrones.data.models.CategoryDTO
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import com.alvaronunez.gameofthrones.presentation.ui.common.Scope
+import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
 import kotlinx.coroutines.launch
 
-class CategoriesPresenter(private val getCategories: GetCategories): Scope by Scope.Impl() {
+class CategoriesPresenter(
+        private val view: CategoriesContract.View,
+        private val getCategories: GetCategories): CategoriesContract.Presenter, Scope by Scope.Impl() {
 
-    interface View {
-        fun navigateToBooks()
-        fun navigateToHouses()
-        fun navigateToChars()
-        fun loadCategories(categories: List<CategoryDTO>) // TODO: 24/10/2020 get categories from splash activity instead?? Should I get them from the repo or call repo in splash and categories has no sense?
-    }
-
-    private var view: View? = null
-
-    fun onCreate(view: View) {
+    fun onCreate() {
         initScope()
-        this.view = view
 
         launch {
             getCategories.invoke { result ->
@@ -36,17 +29,16 @@ class CategoriesPresenter(private val getCategories: GetCategories): Scope by Sc
 
     }
 
-    fun onCategoryClicked(category: CategoryDTO) {
+    override fun onCategoryClicked(category: CategoryDTO) {
         when (category.type) {
-            0 -> view?.navigateToBooks()
-            1 -> view?.navigateToHouses()
-            2 -> view?.navigateToChars()
+            0 -> view.navigateToBooks()
+            1 -> view.navigateToHouses()
+            2 -> view.navigateToChars()
         }
     }
 
 
     fun onDestroy() {
-        this.view = null
         destroyScope()
     }
 

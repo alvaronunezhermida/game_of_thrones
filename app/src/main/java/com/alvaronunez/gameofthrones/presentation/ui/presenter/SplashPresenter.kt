@@ -3,19 +3,16 @@ package com.alvaronunez.gameofthrones.presentation.ui.presenter
 import com.alvaronunez.gameofthrones.data.Result
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import com.alvaronunez.gameofthrones.presentation.ui.common.Scope
+import com.alvaronunez.gameofthrones.presentation.ui.contract.SplashContract
 import kotlinx.coroutines.launch
 
-class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.Impl() {
+class SplashPresenter(
+        private val view: SplashContract.View,
+        private val getCategories: GetCategories): SplashContract.Presenter, Scope by Scope.Impl() {
 
-    interface View {
-        fun navigateToCategories()
-    }
 
-    private var view: View? = null
-
-    fun onCreate(view: View) {
+    fun onCreate() {
         initScope()
-        this.view = view
 
         launch {
             getCategories.invoke { result ->
@@ -33,7 +30,6 @@ class SplashPresenter(private val getCategories: GetCategories): Scope by Scope.
 
 
     fun onDestory() {
-        this.view = null
         destroyScope()
     }
 
