@@ -8,7 +8,7 @@ class CategoriesContract {
         fun navigateToBooks()
         fun navigateToHouses()
         fun navigateToChars()
-        fun loadCategories(categories: List<CategoryDTO>) // TODO: 24/10/2020 get categories from splash activity instead?? Should I get them from the repo or call repo in splash and categories has no sense?
+        fun loadCategories(categories: List<CategoryDTO>)
     }
 
     interface Presenter {
