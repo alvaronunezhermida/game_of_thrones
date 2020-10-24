@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameOfThrones">
         <activity
-            android:name=".presentation.ui.activity.SplashActivity"
+            android:name=".presentation.ui.activity.CategoriesActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GameOfThrones.NoActionBar">
+            android:theme="@style/Theme.GameOfThrones.NoActionBar.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity
-            android:name=".presentation.ui.activity.CategoriesActivity"
-            android:label="@string/app_name"/>
     </application>
 
 </manifest>

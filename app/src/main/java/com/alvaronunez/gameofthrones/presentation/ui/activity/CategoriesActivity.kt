@@ -18,9 +18,11 @@ class CategoriesActivity : AppCompatActivity(), CategoriesContract.View {
     private lateinit var adapter: CategoriesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        presenter.onCreate()
+        setTheme(R.style.Theme_GameOfThrones)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
-        presenter.onCreate()
 
         adapter = CategoriesAdapter(presenter::onCategoryClicked)
         findViewById<RecyclerView>(R.id.categoriesRecycler).adapter = adapter

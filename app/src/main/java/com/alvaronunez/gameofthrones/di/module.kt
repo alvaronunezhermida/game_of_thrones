@@ -11,9 +11,7 @@ import com.alvaronunez.gameofthrones.presentation.data.database.RoomDataSource
 import com.alvaronunez.gameofthrones.presentation.data.service.Service
 import com.alvaronunez.gameofthrones.presentation.data.service.ServiceDataSource
 import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
-import com.alvaronunez.gameofthrones.presentation.ui.contract.SplashContract
 import com.alvaronunez.gameofthrones.presentation.ui.presenter.CategoriesPresenter
-import com.alvaronunez.gameofthrones.presentation.ui.presenter.SplashPresenter
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -47,6 +45,5 @@ private val domainModule = module {
 }
 
 private val presentersModule = module {
-    factory<SplashPresenter> { (view: SplashContract.View) -> SplashPresenter(view, get()) }
-    factory<CategoriesPresenter> { (view: CategoriesContract.View) -> CategoriesPresenter(view, get()) }
+    factory { (view: CategoriesContract.View) -> CategoriesPresenter(view, get()) }
 }
