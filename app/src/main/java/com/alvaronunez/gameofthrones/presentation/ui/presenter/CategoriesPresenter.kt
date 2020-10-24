@@ -25,7 +25,7 @@ class CategoriesPresenter(private val getCategories: GetCategories): Scope by Sc
             getCategories.invoke { result ->
                 when(result) {
                     is Result.Response -> {
-                        view.loadCategories(result.data)
+                        view.loadCategories(result.data.sortedBy { it.name })
                     }
                     is Result.Error -> {
                         // TODO: 20/10/2020 Handle error
