@@ -1,9 +1,9 @@
 package com.alvaronunez.gameofthrones.presentation.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.alvaronunez.gameofthrones.R
 import com.alvaronunez.gameofthrones.data.models.BookDTO
@@ -22,6 +22,9 @@ class BooksActivity : AppCompatActivity(), BooksContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
+        setTitle(R.string.books)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         presenter.onCreate()
 
@@ -44,6 +47,11 @@ class BooksActivity : AppCompatActivity(), BooksContract.View {
 
     override fun loadBooks(books: List<BookDTO>) {
         adapter.books = books
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 
