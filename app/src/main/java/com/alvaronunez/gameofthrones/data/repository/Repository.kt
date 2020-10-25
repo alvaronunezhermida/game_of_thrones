@@ -11,14 +11,12 @@ class Repository(
 ) {
 
     suspend fun getCategories(): Result<List<CategoryDTO>> {
-        localDataSource.getCategories().also { result ->
-            return if (result is Result.Response && result.data.isNotEmpty()) {
-                result
-            } else {
-                remoteDataSource.getCategories().also { remoteResult ->
-                    if (remoteResult is Result.Response && remoteResult.data.isNotEmpty()) localDataSource.saveCategories(remoteResult.data)
-                }
+        return if (localDataSource.isCategoriesEmpty()) {
+            remoteDataSource.getCategories().also { remoteResult ->
+                if (remoteResult is Result.Response && remoteResult.data.isNotEmpty()) localDataSource.saveCategories(remoteResult.data)
             }
+        } else {
+            localDataSource.getCategories()
         }
     }
 
