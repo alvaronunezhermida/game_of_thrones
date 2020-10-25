@@ -13,13 +13,24 @@ class RoomDataSource(db: AppDatabase) : LocalDataSource {
     private val categoryDao = db.categoryDao()
 
     override suspend fun isCategoriesEmpty(): Result<Boolean> =
-        withContext(Dispatchers.IO) { Result.Response(categoryDao.categoriesCount() <= 0) }
+        try {
+            withContext(Dispatchers.IO) { Result.Response(categoryDao.categoriesCount() <= 0) }
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 
-    override suspend fun saveCategories(categories: List<CategoryDTO>) {
-        withContext(Dispatchers.IO) { categoryDao.insertCategories(categories.map { it.toRoomCategoryEntity() }) }
-    }
+    override suspend fun saveCategories(categories: List<CategoryDTO>): Result<Boolean> =
+        try {
+            withContext(Dispatchers.IO) { categoryDao.insertCategories(categories.map { it.toRoomCategoryEntity() }) }
+            Result.Response(true)
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 
-    override suspend fun getCategories(): Result<List<CategoryDTO>> = withContext(Dispatchers.IO) {
-        Result.Response(categoryDao.getAll().map { it.toCategoryDTO() })
-    }
+    override suspend fun getCategories(): Result<List<CategoryDTO>> =
+        try {
+            withContext(Dispatchers.IO) { Result.Response(categoryDao.getAll().map { it.toCategoryDTO() }) }
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 }

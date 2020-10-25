@@ -3,6 +3,7 @@ package com.alvaronunez.gameofthrones.presentation.ui.activity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.alvaronunez.gameofthrones.R
@@ -47,6 +48,16 @@ class HousesActivity : AppCompatActivity(), HousesContract.View {
 
     override fun loadHouses(houses: List<HouseDTO>) {
         adapter.houses = houses
+    }
+
+    override fun showError() {
+        AlertDialog.Builder(this)
+                .setTitle(R.string.error_title)
+                .setMessage(R.string.error_description)
+                .setPositiveButton(R.string.ok) { _, _ ->
+                    finish()
+                }
+                .show()
     }
 
     override fun onSupportNavigateUp(): Boolean {

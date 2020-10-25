@@ -7,6 +7,7 @@ class BooksContract {
     interface View {
         fun showProgress()
         fun hideProgress()
+        fun showError()
         fun loadBooks(books: List<BookDTO>)
     }
 

@@ -11,20 +11,36 @@ import com.alvaronunez.gameofthrones.data.source.RemoteDataSource
 class ServiceDataSource(private val service: Service): RemoteDataSource {
 
     override suspend fun getCategories(): Result<List<CategoryDTO>> =
-        Result.Response(service.apiService
-            .getCategoriesAsync().await())
+        try {
+            Result.Response(service.apiService
+                .getCategoriesAsync().await())
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 
 
     override suspend fun getBooks(): Result<List<BookDTO>> =
-        Result.Response(service.apiService
+        try {
+            Result.Response(service.apiService
                     .getBooksAsync().await())
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 
     override suspend fun getHouses(): Result<List<HouseDTO>> =
-        Result.Response(service.apiService
-                    .getHousesAsync().await())
+        try {
+            Result.Response(service.apiService
+                        .getHousesAsync().await())
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 
     override suspend fun getCharacters(): Result<List<CharDTO>> =
-        Result.Response(service.apiService
-                    .getCharactersAsync().await())
+        try {
+            Result.Response(service.apiService
+                        .getCharactersAsync().await())
+        }catch (e: Exception) {
+            Result.Error(e.message)
+        }
 
 }

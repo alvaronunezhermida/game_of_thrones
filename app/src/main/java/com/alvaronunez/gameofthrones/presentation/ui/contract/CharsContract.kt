@@ -7,6 +7,7 @@ class CharsContract {
     interface View {
         fun showProgress()
         fun hideProgress()
+        fun showError()
         fun loadChars(chars: List<CharDTO>)
     }
 
