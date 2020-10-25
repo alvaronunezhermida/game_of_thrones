@@ -40,7 +40,7 @@ class CategoriesActivity : AppCompatActivity(), CategoriesContract.View {
     }
 
     override fun navigateToHouses() {
-        TODO("Not yet implemented")
+        startActivity(Intent(this, HousesActivity::class.java))
     }
 
     override fun navigateToChars() {

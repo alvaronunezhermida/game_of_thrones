@@ -27,6 +27,8 @@
             android:theme="@style/Theme.GameOfThrones" />
         <activity android:name=".presentation.ui.activity.CharsActivity"
             android:theme="@style/Theme.GameOfThrones" />
+        <activity android:name=".presentation.ui.activity.HousesActivity"
+            android:theme="@style/Theme.GameOfThrones" />
     </application>
 
 </manifest>

@@ -9,5 +9,8 @@
     <string name="date_pattern">d MMM yyyy</string>
 
     <!-- Chars List -->
-    <string name="chars">Chars</string>
+    <string name="chars">Characters</string>
+
+    <!-- Houses List -->
+    <string name="houses">Houses</string>
 </resources>
