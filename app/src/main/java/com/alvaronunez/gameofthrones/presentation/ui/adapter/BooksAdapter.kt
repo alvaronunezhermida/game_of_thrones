@@ -1,6 +1,5 @@
 package com.alvaronunez.gameofthrones.presentation.ui.adapter
 
-import android.text.format.DateFormat
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -11,7 +10,6 @@ import com.alvaronunez.gameofthrones.presentation.ui.common.basicDiffUtil
 import com.alvaronunez.gameofthrones.presentation.ui.common.inflate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 class BooksAdapter() :
         RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
@@ -36,10 +34,10 @@ class BooksAdapter() :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(book: BookDTO) {
             itemView.findViewById<TextView>(R.id.bookName).text = book.name
-            itemView.findViewById<TextView>(R.id.bookAuthor).text = itemView.context.getString(R.string.bookAuthor, book.authors?.get(0))
-            itemView.findViewById<TextView>(R.id.bookPages).text = itemView.context.getString(R.string.bookPages, book.numberOfPages)
+            itemView.findViewById<TextView>(R.id.bookAuthor).text = itemView.context.getString(R.string.book_author, book.authors?.get(0))
+            itemView.findViewById<TextView>(R.id.bookPages).text = itemView.context.getString(R.string.book_pages, book.numberOfPages)
             itemView.findViewById<TextView>(R.id.bookPublisher).text = book.publisher
-            itemView.findViewById<TextView>(R.id.bookReleased).text = DateTimeFormatter.ofPattern(itemView.context.getString(R.string.datePattern)).format(LocalDateTime.parse(book.released))
+            itemView.findViewById<TextView>(R.id.bookReleased).text = DateTimeFormatter.ofPattern(itemView.context.getString(R.string.date_pattern)).format(LocalDateTime.parse(book.released))
         }
     }
 }

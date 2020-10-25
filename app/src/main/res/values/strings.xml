@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Game Of Thrones</string>
-    <string name="baseApiUrl">https://private-anon-2a3767e7a7-androidtestmobgen.apiary-mock.com/</string>
-    <string name="bookAuthor">By %s</string>
-    <string name="bookPages">%s pages</string>
-    <string name="datePattern">d MMM yyyy</string>
+    <string name="base_api_url">https://private-anon-2a3767e7a7-androidtestmobgen.apiary-mock.com/</string>
+    <string name="book_author">By %s</string>
+    <string name="book_pages">%s pages</string>
+    <string name="date_pattern">d MMM yyyy</string>
 </resources>

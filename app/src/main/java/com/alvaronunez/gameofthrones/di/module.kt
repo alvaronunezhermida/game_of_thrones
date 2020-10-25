@@ -32,7 +32,7 @@ fun Application.initDI() {
 }
 
 private val appModule = module {
-    single(named("baseApiUrl")) { androidApplication().getString(R.string.baseApiUrl) }
+    single(named("baseApiUrl")) { androidApplication().getString(R.string.base_api_url) }
     single { AppDatabase.build(get()) }
     factory<LocalDataSource> { RoomDataSource(get()) }
     factory { Service(get(named("baseApiUrl"))) }
