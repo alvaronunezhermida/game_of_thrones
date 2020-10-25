@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".presentation.ui.activity.BooksActivity"
             android:theme="@style/Theme.GameOfThrones" />
+        <activity android:name=".presentation.ui.activity.CharsActivity"
+            android:theme="@style/Theme.GameOfThrones" />
     </application>
 
 </manifest>

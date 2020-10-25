@@ -7,4 +7,7 @@
     <string name="book_author">By %s</string>
     <string name="book_pages">%s pages</string>
     <string name="date_pattern">d MMM yyyy</string>
+
+    <!-- Chars List -->
+    <string name="chars">Chars</string>
 </resources>
