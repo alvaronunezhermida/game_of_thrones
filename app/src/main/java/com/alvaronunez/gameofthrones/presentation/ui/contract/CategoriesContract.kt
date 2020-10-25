@@ -8,6 +8,7 @@ class CategoriesContract {
         fun navigateToBooks()
         fun navigateToHouses()
         fun navigateToChars()
+        fun showError()
         fun loadCategories(categories: List<CategoryDTO>)
     }
 

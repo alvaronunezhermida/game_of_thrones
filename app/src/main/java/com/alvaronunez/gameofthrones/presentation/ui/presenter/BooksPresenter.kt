@@ -21,7 +21,7 @@ class BooksPresenter(
                         view.loadBooks(result.data)
                     }
                     is Result.Error -> {
-                        // TODO: 20/10/2020 Handle error
+                        view.showError()
                     }
                 }
             }

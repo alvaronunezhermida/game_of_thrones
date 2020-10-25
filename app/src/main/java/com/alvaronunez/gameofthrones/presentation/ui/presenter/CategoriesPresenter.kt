@@ -21,7 +21,7 @@ class CategoriesPresenter(
                         view.loadCategories(result.data.sortedBy { it.name })
                     }
                     is Result.Error -> {
-                        // TODO: 20/10/2020 Handle error
+                        view.showError()
                     }
                 }
             }

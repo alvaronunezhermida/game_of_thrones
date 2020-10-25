@@ -3,6 +3,7 @@ package com.alvaronunez.gameofthrones.presentation.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.alvaronunez.gameofthrones.R
 import com.alvaronunez.gameofthrones.data.models.CategoryDTO
@@ -45,6 +46,16 @@ class CategoriesActivity : AppCompatActivity(), CategoriesContract.View {
 
     override fun navigateToChars() {
         startActivity(Intent(this, CharsActivity::class.java))
+    }
+
+    override fun showError() {
+        AlertDialog.Builder(this)
+                .setTitle(R.string.error_title)
+                .setMessage(R.string.error_description)
+                .setPositiveButton(R.string.ok) { _, _ ->
+                    finish()
+                }
+                .show()
     }
 
     override fun loadCategories(categories: List<CategoryDTO>) {

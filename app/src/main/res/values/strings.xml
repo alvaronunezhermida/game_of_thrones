@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Game Of Thrones</string>
     <string name="base_api_url">https://private-anon-2a3767e7a7-androidtestmobgen.apiary-mock.com/</string>
+    <string name="ok">OK</string>
+    <string name="error_title">Oops! Something went wrong!</string>
+    <string name="error_description">Please, try it later.</string>
 
     <!-- Books List -->
     <string name="books">Books</string>

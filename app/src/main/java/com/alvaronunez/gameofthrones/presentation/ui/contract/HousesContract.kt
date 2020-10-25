@@ -7,6 +7,7 @@ class HousesContract {
     interface View {
         fun showProgress()
         fun hideProgress()
+        fun showError()
         fun loadHouses(houses: List<HouseDTO>)
     }
 
