@@ -11,7 +11,7 @@ import com.alvaronunez.gameofthrones.presentation.ui.common.inflate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class BooksAdapter() :
+class BooksAdapter :
         RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
 
     var books: List<BookDTO> by basicDiffUtil(
