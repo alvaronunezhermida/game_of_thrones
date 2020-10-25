@@ -12,6 +12,8 @@ class CategoriesContract {
     }
 
     interface Presenter {
+        fun onCreate()
+        fun onDestroy()
         fun onCategoryClicked(category: CategoryDTO)
     }
 }
