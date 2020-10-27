@@ -5,11 +5,13 @@ import com.alvaronunez.gameofthrones.data.models.CategoryDTO
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import com.alvaronunez.gameofthrones.presentation.ui.common.Scope
 import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class CategoriesPresenter(
         private val view: CategoriesContract.View,
-        private val getCategories: GetCategories): CategoriesContract.Presenter, Scope by Scope.Impl() {
+        private val getCategories: GetCategories,
+        uiDispatcher: CoroutineDispatcher): CategoriesContract.Presenter, Scope by Scope.Impl(uiDispatcher) {
 
     override fun onCreate() {
         initScope()

@@ -4,11 +4,13 @@ import com.alvaronunez.gameofthrones.data.Result
 import com.alvaronunez.gameofthrones.domain.usecases.GetHouses
 import com.alvaronunez.gameofthrones.presentation.ui.common.Scope
 import com.alvaronunez.gameofthrones.presentation.ui.contract.HousesContract
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class HousesPresenter(
         private val view: HousesContract.View,
-        private val getHouses: GetHouses): HousesContract.Presenter, Scope by Scope.Impl() {
+        private val getHouses: GetHouses,
+        uiDispatcher: CoroutineDispatcher): HousesContract.Presenter, Scope by Scope.Impl(uiDispatcher) {
 
     override fun onCreate() {
         initScope()

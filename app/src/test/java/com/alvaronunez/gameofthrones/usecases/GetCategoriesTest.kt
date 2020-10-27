@@ -1,37 +1,35 @@
 package com.alvaronunez.gameofthrones.usecases
 
 import com.alvaronunez.gameofthrones.data.Result
-import com.alvaronunez.gameofthrones.data.models.BookDTO
 import com.alvaronunez.gameofthrones.data.repository.Repository
-import com.alvaronunez.gameofthrones.domain.usecases.GetBooks
+import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.slot
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetBooksTest {
+class GetCategoriesTest {
 
     @RelaxedMockK
     private lateinit var mockRepository: Repository
 
-    lateinit var getBooks: GetBooks
+    lateinit var getCategories: GetCategories
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        getBooks = GetBooks(mockRepository)
+        getCategories = GetCategories(mockRepository)
     }
 
     @Test
-    fun `invoke calls getBooks from repository`() {
-        coEvery { mockRepository.getBooks() } returns Result.Response(listOf())
+    fun `invoke calls getCategories from repository`() {
+        coEvery { mockRepository.getCategories() } returns Result.Response(listOf())
         runBlocking {
-            getBooks.invoke{}
-            coVerify { mockRepository.getBooks() }
+            getCategories.invoke{}
+            coVerify { mockRepository.getCategories() }
         }
 
     }

@@ -29,7 +29,10 @@ class RepositoryTest {
 
     @Test
     fun `getCategories execute isCategoriesEmpty from local`() {
-        coEvery { sut.getCategories().hint(Result::class) } returns Result.Response(listOf())
+
+        coEvery { sut.getCategories() } returns Result.Response(listOf())
+        coEvery { mockLocalDataSource.isCategoriesEmpty() } returns false
+
         runBlocking {
             sut.getCategories()
             coVerify { mockLocalDataSource.isCategoriesEmpty() }
@@ -37,30 +40,37 @@ class RepositoryTest {
     }
 
     @Test
-    fun `getCategories execute getCategories from local`() {
+    fun `getCategories execute getCategories from local when there is categories in local`() {
+
+        coEvery { sut.getCategories() } returns Result.Response(listOf())
+        coEvery { mockLocalDataSource.isCategoriesEmpty() } returns false
+
         runBlocking {
             sut.getCategories()
-            coEvery { mockLocalDataSource.isCategoriesEmpty() } returns false
             coVerify { mockLocalDataSource.getCategories() }
         }
     }
 
     @Test
     fun `getCategories execute getCategories from remote when there isn't categories in local`() {
+        coEvery { sut.getCategories() } returns Result.Response(listOf())
+        coEvery { mockLocalDataSource.isCategoriesEmpty() } returns true
+        coEvery { mockRemoteDataSource.getCategories() } returns Result.Response(listOf())
+
         runBlocking {
             sut.getCategories()
-            coEvery { mockLocalDataSource.isCategoriesEmpty() } returns true
             coVerify { mockRemoteDataSource.getCategories() }
         }
     }
 
     @Test
-    fun `getCategories execute saveCategories from local after getting categories from remote`() {
-        val categories = listOf(CategoryMO.create())
+    fun `getCategories execute saveCategories to local after getting categories from remote`() {
+        val categories = listOf(CategoryMO.normalCategory(), CategoryMO.categoryType1())
+        coEvery { mockLocalDataSource.isCategoriesEmpty() } returns true
+        coEvery { mockRemoteDataSource.getCategories() } returns Result.Response(categories)
+
         runBlocking {
             sut.getCategories()
-            coEvery { mockLocalDataSource.isCategoriesEmpty() } returns true
-            coEvery { mockRemoteDataSource.getCategories() } returns Result.Response(categories)
             coVerify { mockLocalDataSource.saveCategories(categories) }
         }
     }
