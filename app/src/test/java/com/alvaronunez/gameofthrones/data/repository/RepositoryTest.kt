@@ -65,7 +65,7 @@ class RepositoryTest {
 
     @Test
     fun `getCategories execute saveCategories to local after getting categories from remote`() {
-        val categories = listOf(CategoryMO.normalCategory(), CategoryMO.categoryType1())
+        val categories = listOf(CategoryMO.normalCategory(), CategoryMO.categoryType0())
         coEvery { mockLocalDataSource.isCategoriesEmpty() } returns true
         coEvery { mockRemoteDataSource.getCategories() } returns Result.Response(categories)
 
