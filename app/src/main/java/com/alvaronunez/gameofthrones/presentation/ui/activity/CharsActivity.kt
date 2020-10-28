@@ -18,7 +18,7 @@ class CharsActivity : AppCompatActivity(), CharsContract.View {
 
     private val presenter: CharsPresenter by inject { parametersOf(this) }
 
-    private lateinit var adapter: CharsAdapter
+    private val adapter: CharsAdapter = CharsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,6 @@ class CharsActivity : AppCompatActivity(), CharsContract.View {
 
         presenter.onCreate()
 
-        adapter = CharsAdapter()
         findViewById<RecyclerView>(R.id.listRecycler).adapter = adapter
     }
 

@@ -60,6 +60,8 @@ dependencies {
 
     // Test Libs
     testImplementation 'junit:junit:4.13.1'
+    testImplementation "io.mockk:mockk:1.10.2"
+    testImplementation "io.mockk:mockk-android:1.10.2"
 
     // Android Test Libs
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

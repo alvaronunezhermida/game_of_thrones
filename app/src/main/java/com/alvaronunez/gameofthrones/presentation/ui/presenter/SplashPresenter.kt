@@ -1,17 +1,18 @@
 package com.alvaronunez.gameofthrones.presentation.ui.presenter
 
 import com.alvaronunez.gameofthrones.data.Result
-import com.alvaronunez.gameofthrones.data.models.CategoryDTO
 import com.alvaronunez.gameofthrones.domain.usecases.GetCategories
 import com.alvaronunez.gameofthrones.presentation.ui.common.Scope
-import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
+import com.alvaronunez.gameofthrones.presentation.ui.contract.SplashContract
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CategoriesPresenter(
-        private val view: CategoriesContract.View,
+class SplashPresenter(
+        private val view: SplashContract.View,
         private val getCategories: GetCategories,
-        uiDispatcher: CoroutineDispatcher): CategoriesContract.Presenter, Scope by Scope.Impl(uiDispatcher) {
+        uiDispatcher: CoroutineDispatcher): SplashContract.Presenter, Scope by Scope.Impl(uiDispatcher) {
+
 
     override fun onCreate() {
         initScope()
@@ -20,22 +21,13 @@ class CategoriesPresenter(
             getCategories.invoke { result ->
                 when(result) {
                     is Result.Response -> {
-                        view.loadCategories(result.data.sortedBy { it.name })
+                        view.navigateToCategories()
                     }
                     is Result.Error -> {
                         view.showError()
                     }
                 }
             }
-        }
-
-    }
-
-    override fun onCategoryClicked(category: CategoryDTO) {
-        when (category.type) {
-            0 -> view.navigateToBooks()
-            1 -> view.navigateToHouses()
-            2 -> view.navigateToChars()
         }
     }
 

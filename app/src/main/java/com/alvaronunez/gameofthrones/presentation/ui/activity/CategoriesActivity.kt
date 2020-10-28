@@ -17,17 +17,14 @@ class CategoriesActivity : AppCompatActivity(), CategoriesContract.View {
 
     private val presenter: CategoriesPresenter by inject { parametersOf(this) }
 
-    private lateinit var adapter: CategoriesAdapter
+    private val adapter: CategoriesAdapter = CategoriesAdapter(presenter::onCategoryClicked)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // TODO: 24/10/2020 wait data for setting theme after splash
-        presenter.onCreate()
-        setTheme(R.style.Theme_GameOfThrones)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
-        adapter = CategoriesAdapter(presenter::onCategoryClicked)
+        presenter.onCreate()
+
         findViewById<RecyclerView>(R.id.categoriesRecycler).adapter = adapter
     }
 

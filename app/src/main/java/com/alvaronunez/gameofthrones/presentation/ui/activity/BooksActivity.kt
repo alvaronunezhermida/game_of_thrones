@@ -19,7 +19,7 @@ class BooksActivity : AppCompatActivity(), BooksContract.View {
 
     private val presenter: BooksPresenter by inject { parametersOf(this) }
 
-    private lateinit var adapter: BooksAdapter
+    private val adapter: BooksAdapter = BooksAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,6 @@ class BooksActivity : AppCompatActivity(), BooksContract.View {
 
         presenter.onCreate()
 
-        adapter = BooksAdapter()
         findViewById<RecyclerView>(R.id.listRecycler).adapter = adapter
     }
 

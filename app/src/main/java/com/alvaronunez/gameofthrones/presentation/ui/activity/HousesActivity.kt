@@ -18,7 +18,7 @@ class HousesActivity : AppCompatActivity(), HousesContract.View {
 
     private val presenter: HousesPresenter by inject { parametersOf(this) }
 
-    private lateinit var adapter: HousesAdapter
+    private val adapter: HousesAdapter = HousesAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,6 @@ class HousesActivity : AppCompatActivity(), HousesContract.View {
 
         presenter.onCreate()
 
-        adapter = HousesAdapter()
         findViewById<RecyclerView>(R.id.listRecycler).adapter = adapter
     }
 
