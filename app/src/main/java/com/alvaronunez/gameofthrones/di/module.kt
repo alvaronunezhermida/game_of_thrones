@@ -13,14 +13,8 @@ import com.alvaronunez.gameofthrones.presentation.data.database.AppDatabase
 import com.alvaronunez.gameofthrones.presentation.data.database.RoomDataSource
 import com.alvaronunez.gameofthrones.presentation.data.service.Service
 import com.alvaronunez.gameofthrones.presentation.data.service.ServiceDataSource
-import com.alvaronunez.gameofthrones.presentation.ui.contract.BooksContract
-import com.alvaronunez.gameofthrones.presentation.ui.contract.CategoriesContract
-import com.alvaronunez.gameofthrones.presentation.ui.contract.CharsContract
-import com.alvaronunez.gameofthrones.presentation.ui.contract.HousesContract
-import com.alvaronunez.gameofthrones.presentation.ui.presenter.BooksPresenter
-import com.alvaronunez.gameofthrones.presentation.ui.presenter.CategoriesPresenter
-import com.alvaronunez.gameofthrones.presentation.ui.presenter.CharsPresenter
-import com.alvaronunez.gameofthrones.presentation.ui.presenter.HousesPresenter
+import com.alvaronunez.gameofthrones.presentation.ui.contract.*
+import com.alvaronunez.gameofthrones.presentation.ui.presenter.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
@@ -60,6 +54,7 @@ private val domainModule = module {
 }
 
 private val presentersModule = module {
+    factory { (view: SplashContract.View) -> SplashPresenter(view, get(), get()) }
     factory { (view: CategoriesContract.View) -> CategoriesPresenter(view, get(), get()) }
     factory { (view: BooksContract.View) -> BooksPresenter(view, get(), get()) }
     factory { (view: CharsContract.View) -> CharsPresenter(view, get(), get()) }

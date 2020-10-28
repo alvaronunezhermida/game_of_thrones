@@ -15,7 +15,8 @@ abstract class AppDatabase : RoomDatabase() {
             context,
             AppDatabase::class.java,
             "movie-db"
-        ).build()
+        ).allowMainThreadQueries()
+        .build()
     }
 
     abstract fun categoryDao(): CategoryDao
