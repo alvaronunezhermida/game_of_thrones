@@ -8,6 +8,8 @@ import com.alvaronunez.gameofthrones.R
 import com.alvaronunez.gameofthrones.data.models.CharDTO
 import com.alvaronunez.gameofthrones.presentation.ui.common.basicDiffUtil
 import com.alvaronunez.gameofthrones.presentation.ui.common.inflate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class CharsAdapter :
         RecyclerView.Adapter<CharsAdapter.ViewHolder>() {
@@ -32,6 +34,11 @@ class CharsAdapter :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(char: CharDTO) {
             itemView.findViewById<TextView>(R.id.charName).text = char.name
+            if(!char.playedBy.isNullOrEmpty()){
+                itemView.findViewById<TextView>(R.id.charPlayedBy).text = itemView.context.getString(R.string.played_by, char.playedBy[0])
+            }
+            itemView.findViewById<TextView>(R.id.charBorn).text = char.born
+            itemView.findViewById<TextView>(R.id.charGender).text = char.gender
         }
     }
 }

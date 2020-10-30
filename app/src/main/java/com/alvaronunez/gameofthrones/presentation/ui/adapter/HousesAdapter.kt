@@ -32,6 +32,8 @@ class HousesAdapter :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(house: HouseDTO) {
             itemView.findViewById<TextView>(R.id.houseName).text = house.name
+            itemView.findViewById<TextView>(R.id.houseTitle).text = house.title
+            itemView.findViewById<TextView>(R.id.houseRegion).text = house.region
         }
     }
 }
