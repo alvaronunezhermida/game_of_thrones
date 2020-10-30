@@ -28,10 +28,8 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
 
-        <!-- TODO 25/10/2020 add specific data and edit view for it -->
-
         <View
-            android:id="@+id/bookAuthorSeparator"
+            android:id="@+id/houseTitleSeparator"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -42,7 +40,7 @@
 
 
         <TextView
-            android:id="@+id/bookAuthor"
+            android:id="@+id/houseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -50,22 +48,11 @@
             android:textSize="14sp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bookAuthorSeparator"
-            tools:text="By Author" />
+            app:layout_constraintTop_toBottomOf="@+id/houseTitleSeparator"
+            tools:text="Title" />
 
         <TextView
-            android:id="@+id/bookReleased"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bookAuthor"
-            tools:text="1 Aug 1998" />
-
-        <TextView
-            android:id="@+id/bookPages"
+            android:id="@+id/houseRegion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -76,8 +63,8 @@
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bookAuthor"
-            tools:text="100 pages" />
+            app:layout_constraintTop_toBottomOf="@+id/houseTitle"
+            tools:text="Region" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
