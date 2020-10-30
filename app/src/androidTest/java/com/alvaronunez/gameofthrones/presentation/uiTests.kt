@@ -73,6 +73,9 @@ class UiTests: KoinTest {
 
         assertListNotEmpty(R.id.listRecycler)
         assertDisplayed(R.id.charName)
+        assertDisplayed(R.id.charPlayedBy)
+        assertDisplayed(R.id.charBorn)
+        assertDisplayed(R.id.charGender)
     }
 
     @Test
@@ -82,6 +85,8 @@ class UiTests: KoinTest {
 
         assertListNotEmpty(R.id.listRecycler)
         assertDisplayed(R.id.houseName)
+        assertDisplayed(R.id.houseTitle)
+        assertDisplayed(R.id.houseRegion)
     }
 
 
